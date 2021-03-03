@@ -8,14 +8,18 @@
 <!-- <div class="container"> -->
 <div class="columns is-multiline is-flex m-2">
     <% for (let i = 0; i < allSubjects.length; i++) { %>
-<div class="column is-primary">
-<ul>
+<div class="column">
+<ul class="unit has-background-primary">
     <li><%=allSubjects[i].name%></li>
     <li><%=allSubjects[i].icon%></li>
     <li>Skill level: <%=allSubjects[i].skillLevel%></li>
-    <li><%=allSubjects[i].studyMethod%></li>
-    <li><%=allSubjects[i].nextStep%></li>
-    <li><%=allSubjects[i].onResume%></li>
+    <li>Study method: <%=allSubjects[i].studyMethod%></li>
+    <li>Next step: <%=allSubjects[i].nextStep%></li>
+    <li>On resume: <%=allSubjects[i].onResume%></li>
+    <li class="is-flex is-justify-content-space-around"><a href="/study/<%=allSubjects[i].id %>/edit"><button>Edit</button></a><form action="/study/<%= allSubjects[i].id %>?_method=DELETE" method="POST">
+        <input type="submit" value="Delete"/>
+    </form></li>
+</ul>
 </div>
 <% } %>
 </div>
