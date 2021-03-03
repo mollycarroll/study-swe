@@ -15,7 +15,7 @@ const port = process.env.PORT || 3000;
 const MONGODBURI = process.env.MONGODBURI || 'mongodb://localhost:27017/study';
 
 // controllers
-// const studyController = require('./controllers/study_conteroller.js');
+const studyController = require('./controllers/study_controller.js');
 
 // middleware
 app.use(express.json());
@@ -32,6 +32,8 @@ app.use(express.static('public'));
 //     )
 //   );
 app.use(logRequest);
+
+app.use('/study', studyController);
 
 // mongoose connection logic
 mongoose.connect(MONGODBURI, { 

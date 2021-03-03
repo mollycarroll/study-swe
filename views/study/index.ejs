@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../partials/head.ejs') %>
+</head>
+<body>
+    <%- include ('../partials/header.ejs') %>
+<!-- <div class="container"> -->
+<div class="columns is-multiline is-flex m-2">
+    <% for (let i = 0; i < allSubjects.length; i++) { %>
+<div class="column is-primary">
+<ul>
+    <li><%=allSubjects[i].name%></li>
+    <li><%=allSubjects[i].icon%></li>
+    <li>Skill level: <%=allSubjects[i].skillLevel%></li>
+    <li><%=allSubjects[i].studyMethod%></li>
+    <li><%=allSubjects[i].nextStep%></li>
+    <li><%=allSubjects[i].onResume%></li>
+</div>
+<% } %>
+</div>
+<!-- </div> -->
+</ul>
+</body>
+</html>
