@@ -1,0 +1,58 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const methodOverride = require('method-override');
+// const session = require('express-session');
+
+const {logRequest} = require('./services.js');
+
+// import and configure dotenv
+require('dotenv').config();
+
+// app configuration
+const app = express();
+const db = mongoose.connection;
+const port = process.env.PORT || 3000;
+const MONGODBURI = process.env.MONGODBURI || 'mongodb://localhost:27017/study';
+
+// controllers
+// const studyController = require('./controllers/study_conteroller.js');
+
+// middleware
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
+app.use(express.static('public'));
+// app.use(
+//     session(
+//       {
+//         secret: process.env.SECRET,
+//         resave: false,
+//         saveUninitialized: false,
+//       }
+//     )
+//   );
+app.use(logRequest);
+
+// mongoose connection logic
+mongoose.connect(MONGODBURI, { 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true 
+  });
+  mongoose.connection.once('open', ()=> {
+      console.log('connected to mongo');
+  });
+
+// connection error/success
+db.on('error', err => console.log(err.message + ' is mongod not running?'));
+db.on('connected', () => console.log('mongo connected: ', MONGODBURI));
+db.on('disconnected', () => console.log('mongo disconnected'));
+
+// routes
+// app.get('/', (req, res) => {
+//     res.send('hello world');
+// })
+
+// listener
+app.listen(port, () => {
+    console.log('listening on port ' + port);
+});
