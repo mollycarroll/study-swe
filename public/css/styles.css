@@ -1,3 +1,24 @@
 .unit {
     padding: 3%;
+    background-color: #7FD8BE!important;
+    border-radius: 5%;
+}
+
+.sign-up {
+    background-color: #7FD8BE!important;
+    border: 1px solid #7FD8BE!important;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+.form-container {
+    background-color: #7FD8BE;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    padding: 2%;
+    border-radius: 5%;
 }

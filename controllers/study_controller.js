@@ -20,14 +20,14 @@ study.get('/seedsubjects', (req, res) => {
     Subject.create([
         {
             name: 'Express',
-            icon: '<i class="devicon-express-original"></i>',
+            icon: 'devicon-express-original',
             skillLevel: 3,
             studyMethod: 'Completing this app',
             onResume: true
         },
         {
             name: 'jQuery',
-            icon: '<i class="devicon-jquery-plain-wordmark"></i>',
+            icon: 'devicon-jquery-plain-wordmark',
             skillLevel: 4,
             studyMethod: 'Reading documentation, including jQuery in projects',
             nextStep: 'Add DOM manipulation jQuery to my next project',
@@ -35,14 +35,14 @@ study.get('/seedsubjects', (req, res) => {
         },
         {
             name: 'React',
-            icon: '<i class="devicon-react-original"></i>',
+            icon: 'devicon-react-original',
             skillLevel: 1, 
             nextStep: 'Attend classes on React and complete class exercises and homework', 
             onResume: false
         },
         {
             name: 'Node.js',
-            icon: '<i class="devicon-nodejs-plain"></i>',
+            icon: 'devicon-nodejs-plain',
             skillLevel: 4,
             studyMethod: 'Build apps in Node',
             nextStep: 'Try new Node packages in apps I build',

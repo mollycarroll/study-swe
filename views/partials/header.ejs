@@ -14,9 +14,6 @@
       
         <div id="aimNav" class="navbar-menu">
           <div class="navbar-start">
-            <% if (currentUser) { %>
-              <li class="navbar-item">Hello <%= currentUser.username %></li>
-              <% } %>
             <a href="/study" class="navbar-item">
               Home
             </a>
@@ -28,17 +25,24 @@
           </div>
       
           <div class="navbar-end">
+            <% if (currentUser) { %>
+              <div class="navbar-item">Hello <%= currentUser.username %></div>
+              <% } %>
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button is-primary" href="/users/new">
+                <% if (!currentUser) { %>
+                <a class="button sign-up" href="/users/new">
                   <strong>Sign up</strong>
                 </a>
                 <a class="button is-light" href="/sessions/new">
                   Log in
                 </a>
+                <% } %>
+                <% if (currentUser) { %>
                 <form action="/sessions?_method=DELETE" method="POST">
-                  <input class="button is-primary" type="submit" value="Log Out" />
+                  <input class="button is-dark" type="submit" value="Log Out" />
                 </form>
+                <% } %>
               </div>
             </div>
           </div>
