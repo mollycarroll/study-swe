@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const subjectSchema = new mongoose.Schema({
     name: String,
-    img: String,
     skillLevel: Number,
     studyMethod: String,
     nextStep: String,
