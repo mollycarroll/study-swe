@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
-// const session = require('express-session');
+const session = require('express-session');
 
 const {logRequest} = require('./services.js');
 
@@ -16,24 +16,28 @@ const MONGODBURI = process.env.MONGODBURI || 'mongodb://localhost:27017/study';
 
 // controllers
 const studyController = require('./controllers/study_controller.js');
+const sessionsController = require('./controllers/sessions_controller.js');
+const usersController = require('./controllers/users_controller.js');
 
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
-// app.use(
-//     session(
-//       {
-//         secret: process.env.SECRET,
-//         resave: false,
-//         saveUninitialized: false,
-//       }
-//     )
-//   );
+app.use(
+    session(
+      {
+        secret: process.env.SECRET,
+        resave: false,
+        saveUninitialized: false,
+      }
+    )
+  );
 app.use(logRequest);
 
 app.use('/study', studyController);
+app.use('/sessions', sessionsController);
+app.use('/users', usersController);
 
 // mongoose connection logic
 mongoose.connect(MONGODBURI, { 

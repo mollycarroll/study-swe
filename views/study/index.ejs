@@ -5,12 +5,11 @@
 </head>
 <body>
     <%- include ('../partials/header.ejs') %>
-<!-- <div class="container"> -->
 <div class="columns is-multiline is-flex m-2">
     <% for (let i = 0; i < allSubjects.length; i++) { %>
 <div class="column">
 <ul class="unit has-background-primary">
-    <li><%=allSubjects[i].name%></li>
+    <li class="has-text-weight-bold"><%=allSubjects[i].name%></li>
     <li><%=allSubjects[i].icon%></li>
     <li>Skill level: <%=allSubjects[i].skillLevel%></li>
     <li>Study method: <%=allSubjects[i].studyMethod%></li>
@@ -23,7 +22,6 @@
 </div>
 <% } %>
 </div>
-<!-- </div> -->
 </ul>
 </body>
 </html>

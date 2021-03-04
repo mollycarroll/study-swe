@@ -2,14 +2,15 @@ const express = require('express');
 const study = express.Router();
 const Subject = require('../models/subjects.js');
 
-// const { isAuthenticated } = require('../services.js');
+const { isAuthenticated } = require('../services.js');
 
 // routes
 // index
 study.get('/', (req, res) => {
     Subject.find({}, (error, subjects) => {
         res.render('study/index.ejs', {
-            allSubjects: subjects
+            allSubjects: subjects,
+            currentUser: req.session.currentUser
         })
     })
 });
@@ -53,8 +54,10 @@ study.get('/seedsubjects', (req, res) => {
 });
 
 // new
-study.get('/new', (req, res) => {
-    res.render('study/new.ejs');
+study.get('/new', isAuthenticated, (req, res) => {
+    res.render('study/new.ejs', {
+        currentUser: req.session.currentUser
+    });
 });
 
 // post (create)
@@ -71,11 +74,12 @@ study.post('/', (req, res) => {
 });
 
 // edit
-study.get('/:id/edit', (req, res) => {
+study.get('/:id/edit', isAuthenticated, (req, res) => {
     Subject.findById(req.params.id, (error, foundSubject) => {
         res.render('study/edit.ejs', {
             subject: foundSubject,
-            method: 'PUT'
+            method: 'PUT',
+            currentUser: req.session.currentUser
         })
     })
 });
@@ -98,7 +102,8 @@ study.put('/:id', (req, res) => {
 study.get('/:id', (req, res) => {
     Subject.findById(req.params.id, (error, foundSubject) => {
         res.render('study/show.ejs', {
-            subject: foundSubject
+            subject: foundSubject,
+            currentUser: req.session.currentUser
         })
     })
 });
