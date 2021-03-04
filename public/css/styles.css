@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
 .unit {
     padding: 3%;
     background-color: #7FD8BE!important;
@@ -23,6 +25,27 @@ li {
     border-radius: 5%;
 }
 
+.user-form-container {
+    background-color: #7FD8BE;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    padding: 2%;
+}
+
 footer {
     margin-top: 10%;
+}
+
+.navbar-item:hover {
+    color: #000000!important;
+}
+
+a {
+    color: #335C67;
+}
+
+.skill-name {
+    font-family: 'Roboto Mono', monospace;
 }
