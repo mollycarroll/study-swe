@@ -54,9 +54,9 @@ db.on('connected', () => console.log('mongo connected: ', MONGODBURI));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 // routes
-// app.get('/', (req, res) => {
-//     res.send('hello world');
-// })
+app.get('/', (req, res) => {
+    res.redirect('/study');
+})
 
 // listener
 app.listen(port, () => {
