@@ -3,6 +3,8 @@
     <form action="/study" method="POST">
         <label for="name">Skill Name:</label>
         <input type="text" name="name" id="name" /><br/><br/>
+        <label for="level">Skill Level: (1-5)</label>
+        <input type="number" name="skillLevel" id="skillLevel"/> <br/><br/>
         <label for="studyMethod">Study Method(s): </label>
         <input type="text" name="studyMethod" id="studyMethod" /> <br/><br/>
         <label for="nextStep">Next Step(s): </label>
@@ -15,6 +17,8 @@
         <form action="/study/<%=subject.id%>?_method=PUT" method="POST">
             <label for="name">Skill Name:</label>
             <input type="text" name="name" id="name" value="<%=subject.name%>" /><br/><br/>
+            <label for="level">Skill Level: (1-5)</label>
+            <input type="number" name="skillLevel" id="skillLevel" value="<%=subject.skillLevel%>"/> <br/><br/>
             <label for="studyMethod">Study Method(s): </label>
             <input type="text" name="studyMethod" id="studyMethod" value="<%=subject.studyMethod%>" /> <br/><br/>
             <label for="nextStep">Next Step(s): </label>
